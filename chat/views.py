@@ -44,8 +44,9 @@ def index(request):
         username=request.user.username
         id = getuserid(username)
         customerresult = getcustomerlist(id)
+        print(customerresult)
 
-        return render(request,'chat/base.html',{'customer':customerresult})
+        return render(request,'chat/base.html',{'customers':customerresult})
 
 
 
