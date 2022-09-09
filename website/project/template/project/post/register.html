@@ -1,0 +1,25 @@
+{% extends "project/base.html" %}
+{% load static %}
+{% block title %} Login Page {% endblock %}
+
+{% block content %}
+    <div class="boxy">
+        <h1>Register</h1>
+        <form action="#">
+            <div class="container-register">
+                <div class="line-register">
+                    <input class="input-register" type="text" name="firstname" id="firstname" placeholder="Enter your Firstname">
+                    <input class="input-register" type="text" name="lastname" id="lastname" placeholder="Enter your Lastname">
+                    <input class="input-register" type="text" name="email" id="email" placeholder="Enter your Email Address">
+                </div>
+                <div class="line-register">
+                    <input class="input-register" type="text" name="email" id="email" placeholder="Enter your Email Address">
+                    <input class="input-register" type="text" name="password" id="password" placeholder="Enter your password">
+                    <input class="input-register" type="text" name="c-password" id="c-password" placeholder="Confirm your password">
+                </div>
+            </div>
+            <div class="button-register"><button type="submit" class="btn-register">Sign up</button></div>
+        </form>
+        <div class="a-tag-register">Already have an account? <a href="login.html">Sign In</a></div>
+    </div>
+{% endblock %}
