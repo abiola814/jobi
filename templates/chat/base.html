@@ -30,7 +30,7 @@
             <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
           </div>
         </div>
-
+        
         <div class="row searchBox">
           <div class="col-sm-12 searchBox-inner">
             <div class="form-group has-feedback">
@@ -56,16 +56,17 @@
                 </span>
                 </div>
                 <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                  <span class="time-meta pull-right">18:18
+                  <span class="time-meta pull-right">{{customer.username}}
                 </span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </a>
       {% endfor %}
     </div>
-      `<div class="side-two">
+      <div class="side-two">
         <div class="row newMessage-heading">
           <div class="row newMessage-main">
             <div class="col-sm-2 col-xs-2 newMessage-back">
@@ -88,6 +89,8 @@
 
         <div class="row compose-sideBar">
           <div class="row sideBar-body">
+            {% for user in users %}
+            <a href="/addcustomer/{{user.username}}">
             <div class="col-sm-3 col-xs-3 sideBar-avatar">
               <div class="avatar-icon">
                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
@@ -96,15 +99,17 @@
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
                 <div class="col-sm-8 col-xs-8 sideBar-name">
-                  <span class="name-meta">John Doe
+                  <span class="name-meta">{{user.name}}
                 </span>
                 </div>
-                <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
-                  <span class="time-meta pull-right">18:18
+                 <div class="col-sm-4 col-xs-4 pull-right sideBar-time">
+                  <span class="time-meta pull-right">@{{user.username}}
                 </span>
                 </div>
               </div>
             </div>
+            </a>
+            {% endfor %}
           </div>
 
         
@@ -119,11 +124,11 @@
         </div>
       </div>
 
-        </div>
-      </div>
     </div>
+      
+    
 
-    <div class="col-sm-8 conversation">
+    <div class="col-sm-8 conversation" >
       <div class="row heading">
         <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
           <div class="heading-avatar-icon">
@@ -131,7 +136,7 @@
           </div>
         </div>
         <div class="col-sm-8 col-xs-7 heading-name">
-          <a class="heading-name-meta">John Doe
+          <a class="heading-name-meta">{{reciever.name}}
           </a>
           <span class="heading-online">Online</span>
         </div>
@@ -148,48 +153,56 @@
             </a>
           </div>
         </div>
-
-        <div class="row message-body">
-          <div class="col-sm-12 message-main-receiver">
-            <div class="receiver">
-              <div class="message-text">
-               Hi, what are you doing?!
-              </div>
-              <span class="message-time pull-right">
-                Sun
-              </span>
-            </div>
-          </div>
-        </div>
-
+        <div class="messa" id="board">
+        {% for message in messages %}
+        {% if curr_user == message.user_name %}
         <div class="row message-body">
           <div class="col-sm-12 message-main-sender">
             <div class="sender">
               <div class="message-text">
-                I am doing nothing man!
+                {{message.description}}
               </div>
               <span class="message-time pull-right">
-                Sun
+                {{message.time_taken}}
               </span>
             </div>
           </div>
         </div>
+        {% else %}
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-reciever">
+            <div class="reciever">
+              <div class="message-text">
+                {{message.description}}
+              </div>
+              <span class="message-time pull-right">
+                {{message.time_taken}}
+              </span>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
       </div>
+      </div>
+      <form method="post" class="form-group" id="chat-box">
+        {% csrf_token %}
+        <div class="row reply">
+          <div class="col-sm-1 col-xs-1 reply-emojis">
+            <i class="fa fa-smile-o fa-2x"></i>
+          </div>
+          <div class="col-sm-9 col-xs-9 reply-main">
+            <textarea class="form-control" rows="1" id="comment"></textarea>
+          </div>
+          <div class="col-sm-1 col-xs-1 reply-recording">
+            <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+          </div>
+          <button type="submit" class="col-sm-1 col-xs-1 reply-send">
+            <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+          </button>
+        </div>
+      </form>
 
-      <div class="row reply">
-        <div class="col-sm-1 col-xs-1 reply-emojis">
-          <i class="fa fa-smile-o fa-2x"></i>
-        </div>
-        <div class="col-sm-9 col-xs-9 reply-main">
-          <textarea class="form-control" rows="1" id="comment"></textarea>
-        </div>
-        <div class="col-sm-1 col-xs-1 reply-recording">
-          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
-        </div>
-        <div class="col-sm-1 col-xs-1 reply-send">
-          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -784,6 +797,41 @@ body {
 </style>
 
 <script type="text/javascript">
+
+  var messageBody = document.querySelector('.messa');
+        messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
+        sender_id = "{{ reciever.id }}";
+        receiver_id = "{{ curr_user.id }}";
+
+        function scrolltoend() {
+            $('#board').stop().animate({
+                scrollTop: $('#board')[0].scrollHeight
+            }, 800);
+         } 
+const text_box =  '<div class="row message-body">'+
+                  '<div class="col-sm-12 message-main-sender">'+
+                  '<div class="sender">'+
+                 '<div class="message-text">'+
+                 '{description}'+
+                  '</div>'+
+                  '<span class="message-time pull-right">'+
+                  '{time}'+
+                  '</span>'+
+                  '</div>'
+
+const text =   '<div class="row message-body">'+
+              '<div class="col-sm-12 message-main-reciever">'+
+              '<div class="receiver">'+
+            '<div class="message-text">'+
+            '{description}'+
+              '</div>'+
+              '<span class="message-time pull-right">'+
+              '{time}'+
+              '</span>'+
+              '</div>'
+
+
 $(function(){
     $(".heading-compose").click(function() {
       $(".side-two").css({
@@ -796,7 +844,44 @@ $(function(){
         "left": "-100%"
       });
     });
+
+    $('#chat-box').on('submit', function (event) {
+      event.preventDefault();
+      var message = $('#comment');
+      console.log('{{ curr_user.username }}', '{{ reciever.username }}', message.val())
+      send('{{ curr_user.username }}', '{{ reciever.username }}', message.val());
+      message.val('');
+  })
+  setInterval(receive, 1000)
 })
+function send(sender, receiver, message){
+
+  $.post('/api/messages', '{"user_name": "' + sender + '", "staff_name": "' +
+          receiver + '","description": "' + message + '" }', function (data) {
+      var field = text_box.replace('{description}', message);
+      var today = new Date();
+      var time = today.getHours() + ":" + today.getMinutes()
+      field = field.replace('{time}', time)
+      $('#board').append(field);
+      scrolltoend();
+
+  })
+}
+function receive(){
+  $.get('/api/messages/' + sender_id + '/' + receiver_id, function(data){
+      if(data.length !== 0){
+          for(var i = 0; i < data.length; i++){
+              var field = text.replace('{description}', data[i].description);
+              var time = data[i].time_taken.slice(0, 5) + ' a.m'
+              field = field.replace('{time}', time);
+              $('#board').append(field);
+              scrolltoend();
+              
+          }
+      }
+  })
+}
+
 </script>
 </body>
 </html>

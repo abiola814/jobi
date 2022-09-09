@@ -7,9 +7,9 @@ from django.db import models
 
 # create user profile for both and staff developer
 
-class Userprofile(models.Model):
+class UserProfile(models.Model):
     name = models.CharField(max_length=25)
-    username= models.CharField(max_length=25, unique=True)
+    username = models.CharField(max_length=25, unique=True)
     email = models.EmailField(unique=True)
 
     def __str__(self):
@@ -18,8 +18,8 @@ class Userprofile(models.Model):
 # message description sent to staff and sender info
 class Message(models.Model):
     description=models.TextField()
-    user_name= models.ForeignKey(Userprofile,related_name="sender", on_delete=models.CASCADE)
-    staff_name= models.ForeignKey(Userprofile,on_delete=models.CASCADE,related_name="reciever")
+    user_name= models.ForeignKey(UserProfile,related_name="sender", on_delete=models.CASCADE)
+    staff_name= models.ForeignKey(UserProfile,on_delete=models.CASCADE,related_name="reciever")
     time_taken=models.TimeField(auto_now_add=True)
     seen = models.BooleanField(default=False)
     time_stamp = models.DateField(auto_now_add=True)
@@ -32,7 +32,7 @@ class Message(models.Model):
 
 
 class Customers(models.Model):
-    user = models.ForeignKey(Userprofile,on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
     customer = models.IntegerField()
 
     def __str__(self):

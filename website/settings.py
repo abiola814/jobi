@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'project.apps.ProjectConfig',
     'chat',
     'account',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

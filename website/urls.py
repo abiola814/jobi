@@ -22,4 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project.urls', namespace='project')),
     path('chat/', views.index,name='chat'),
+     path('chat/<str:username>', views.chat,name='chatmessage'),
+    path('addcustomer/<str:name>',views.addcustomer,name="addcustomer"),
+     path('api/messages/<int:sender>/<int:receiver>', views.message_list, name='message-detail'),
+        path('api/messages', views.message_list, name='message-list'),
 ]
