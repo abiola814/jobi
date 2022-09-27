@@ -4,6 +4,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 from chat.serializers import MessageSeriallizer
+from .register import RegisterUser
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.views.decorators.debug import sensitive_post_parameters
+
 
 # Create your views here.
 
@@ -128,7 +133,35 @@ def message_list(request, sender=None, receiver=None):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
+@sensitive_post_parameters('pswd', 'cpswd')
+def user_register(request):
+    if request.method == 'POST':
+        body = request.POST
 
+        name=body['name']
+        username=body['username']
+        email=body['email']
+        password=body['pswd']
+        confirm_password=body['cpswd']
+
+        if name is not None and username is not None and email is not None and password is not None and confirm_password is not None:
+            if confirm_password == password:
+                fields = RegisterUser()
+                fields.name = name
+                fields.username = username
+                fields.email = email
+                fields.password = password
+                fields.confirm_password = confirm_password
+                fields.save()
+                messages.info(request, 'Registeration successful')
+                return redirect('register.html')
+            else:
+                messages.info(request, 'confirm password and password must be the same')
+                return redirect('register.html')
+
+    else:
+        return render(request, 'register.html')
+        
 
 
 
