@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+
+    <link rel="stylesheet" href=" {% static 'css/chat.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        margin: 0 auto;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: #222
+    }
+</style>
+ 
+<style>
+body{
+  background:#121212;
+  font-family:sans-serif;
+  font-size:1,2em;
+  color:white;
+}
+.container{
+ min-height:700px;
+  position:relative;
+  background:#121212;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+margin:90px auto;
+margin-top: 20%;
+}
+.card{
+  width:350px;
+  min-height:100px;
+  background:#212121;
+   display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  border:5px solid #333;
+ 
+}
+
+.circ{
+  width:100%;
+  height:132px;
+  display:flex;
+  border-bottom:5px solid #333;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items:center;
+ }
+
+.bulb{
+  width:75px;
+  height:75px;
+  border-radius:100%;
+  transform:scale(.5);
+  background:#ed85ad;
+  box-shadow: 1px 0px 45px 0px rgba(237, 133, 173, 0.95);
+ margin-top:-30px;
+animation:grow 7s linear infinite;
+}
+
+.bulb::before{
+  content:"";
+  display:block;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  height: 0;
+  width: 37px;
+  margin:60px 11px;
+  border-top: 25px solid #ed85ad;
+}
+
+.bulb::after{
+  content:"";
+  position:absolute;
+  width:40px;
+  height:25px;
+  border-radius:0 0 30px 30px;
+  background:#555;
+  margin:-55px 17px;
+}
+.arc{
+  position:absolute;
+   width: 40px;
+  height: 150px;
+  border-top: 3px solid #ddd;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-radius: 100px / 100px;
+  transform:rotate(75deg);
+  margin:-172px -33px;}
+.text{
+  width:80%;
+ padding-bottom:1.7em;
+  display:flex;
+ justify-content:center;
+  align-self:center;
+ margin-top:70px;
+  margin-bottom:33px;
+  
+ 
+}
+p{
+  text-align:center;
+  
+}
+
+.laz{
+  position:absolute;
+  width:30px;
+  height:85px;
+  border-radius:30px 30px 0 0;
+  background: #9077F4;
+  margin:0px 0px;
+  animation:escri 2.1s alternate infinite;
+  transform:scale(.7) rotate(35deg);
+}
+.laz::before{
+  content:"";
+  display:block;
+  width:21px;
+  height:16px;
+  border-radius:21px 21px 0 0;
+ background:#FFD800;
+  border-right:9px solid #E5CA00;
+}
+
+.laz::after{
+  content:"";
+  position:absolute;
+    width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 21px solid  #FFD800;
+  margin:69px -1px;
+}
+
+.arc3{
+  position:absolute;
+   width: 19px;
+  height: 150px;
+  border-top: 3px solid white;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-radius: 100px / 100px;
+  transform:rotate(-50deg);
+  margin:-37px 52px;}
+.linea{
+  position:absolute;
+  width:50px;
+  height:3px;
+  background: #9077F4;
+  margin:35px 0px;
+ animation:escri3 2.1s alternate infinite;
+}
+.compu{
+  width:121px;
+  height:80px;
+  border:12px solid #090909;
+  border-radius:12px;
+  background:#6FC7F7;
+  transform:scale(.7);
+  animation:cre 3s linear infinite;
+}
+.compu::before{
+  content:"";
+  display:block;
+  width: 0;
+  height: 0;
+  border-left: 21px solid transparent;
+  border-right: 21px solid transparent;
+  border-bottom: 21px solid #090909;
+  margin:83px 40px
+}
+.compu:after{
+  content:"DESIGN";
+  display:block;
+  font-family:verdana;
+  font-weight:700;
+  color:#333;
+  font-size:1.2em;
+  text-align:center;
+  margin-top:-157px;}
+.boton{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  }
+.btn, .btn3,.btn7{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:132px;
+  height:35px;
+  color:#212121;
+  font-weight:700;
+  border-radius:12px;
+   align-self:center;
+  
+}
+
+.btn{
+   background:#ed85ad;
+  
+}
+.btn3{
+   background: #9077F4;
+  
+}
+.btn7{
+   background: #6FC7F7;;
+  
+}
+@keyframes grow{
+  
+  0%,35%{opacity:.3}
+50%,75%,85%{opacity:1}
+  100%{opacity:1}
+}
+@keyframes escri  {
+  0%{ margin:-7px 0px}
+  100%{ margin:-7px 33px}
+}
+
+@keyframes escri3 {
+  0%{width:0px}
+  100%{ width: 33px}
+}
+@keyframes cre {
+  0%{transform:scale(0)}
+  50%,70%,80%, 90%,100%{ transform:scale(.7)}
+}
+
+@media only screen and (max-width:830px){
+  .container{
+    flex-wrap:wrap;
+    
+  }
+  .card{
+    margin-top:12px;
+  }
+}
+
+ </style>
+</head>
+<body>
+  <div class="container">
+
+  <div class="card">
+    <div class="circ">
+      <div class="bulb"><div class="arc"></div></div>
+          </div>
+    <div class="text"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi praesentium quos repellat laudantium, adipisci earum tenetur magnam, doloremque ut reprehenderit necessitatibus veritatis repudiandae voluptatum </p></div>
+    <div class="boton"><div class="btn">IDEAS</div></div>
+  </div>
+  <div class="card">
+    <div class="circ">
+       <div class="laz"><div class="arc3"></div></div>
+      <div class="linea"></div>
+    </div>
+      <div class="text"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi praesentium quos repellat laudantium, adipisci earum tenetur magnam, doloremque ut reprehenderit necessitatibus veritatis repudiandae voluptatum </p></div>   
+<div class="boton"><div class="btn3">DESIGN</div></div>
+  </div>
+  <div class="card">
+    <div class="circ">
+       <div class="compu"><div class="arc7"></div></div>
+    </div>
+     <div class="text"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi praesentium quos repellat laudantium, adipisci earum tenetur magnam, doloremque ut reprehenderit necessitatibus veritatis repudiandae voluptatum </p></div>   
+    <div class="boton"><div class="btn7">CODE</div></div>
+  </div>
+  
+</div>
+</div>
+</div>
+<div class="chat-collapse">
+  <button id="chat-btn" type="button" class="collapse">chat with us
+      <i id="chat-icon" style="color: white;" class="fa fa-fw fa-comments-o"></i>
+  </button>
+  <div class="content">
+      <div class="full-chat-block">
+      <div class="outer-contain">
+          <div class="chat-container">
+              <div id="chat-box">
+                  <h5 id="chat-time"></h5>
+                  <p id="chat-msg" class="chat-bot"><span>...loading</span></p>
+              </div>
+              <div class="chat-input-content">
+                  <div id="chat-input">
+                      <input type="text" name="msg" id="textinput" class="input-box" placeholder="tap to send a message">
+                      <p ></p>
+
+                  </div>
+                  <div class="chat-btn-icon">
+                      <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart" onclick="heartButton()"></i>
+                      <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send" onclick="sendButton()"></i>                        
+                  </div>
+              </div>
+              <div id="chat-bar-bottom">
+                  <p></p>
+              </div>
+          </div>
+          
+      </div>
+
+  </div>
+</div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static 'chat.js' %}"></script>
+</html>
