@@ -17,6 +17,8 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <!-- Bootstrap 5-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
@@ -44,13 +46,55 @@
                 </ul>
             </nav>
                 <!-- Header-->
-                <header class="masthead d-flex align-items-center">
-                    <div class="container px-4 px-lg-5 text-center">
-                        <h1 class="mb-1">Stylish Portfolio</h1>
-                        <h3 class="mb-5"><em>A Free Bootstrap Theme by Start Bootstrap</em></h3>
-                        <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+                <header class="masthead ">
+                    <!-- <div class="opac d-flex align-items-center">
+                        <div class="container px-4 px-lg-5 text-center">
+                            <h1 class="mb-1">Stylish Portfolio</h1>
+                            <h3 class="mb-5"><em>A Free Bootstrap Theme by Start Bootstrap</em></h3>
+                            <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+                        </div> -->
                     </div>
-                </header>
+                    <div class="jobi"><h1>Jobi</h1></div>
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <a href="#">
+                                <img src="../../static/assets/img/appointment.jpg" class="d-block w-100 h-100" alt="...">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block colos">
+                                <h5>Exam system</h5>
+                                <p>Some representative placeholder content for the second slide.</p>
+                              </div>
+                          </div>
+                          <div class="carousel-item">
+                            <a href="#">
+                                <img src="http://esslasu.herokuapp.com/static/img/back_img.354709095d7a.png" class="d-block w-100 h-100" alt="...">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block colos">
+                                <h5>ESS LASU voting system</h5>
+                                <p>A small voting system for an award night</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <a href="#">
+                                <img src="../../static/assets/img/appointment.jpg" class="d-block w-100 h-100" alt="...">
+                            </a>
+                            <div class="carousel-caption d-none d-md-block colos">
+                                <h5>Movie-Actor image recognizer</h5>
+                                <p>Gets the whole information about an actor or actress just through the image</p>
+                            </div>
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                    </header>
                 <!-- About-->
                 <section class="content-section bg-light" id="about">
                     <div class="container px-4 px-lg-5 text-center">
@@ -75,17 +119,7 @@
                             <h2 class="mb-5">What We Offer</h2>
                         </div>
                         <div class="row gx-4 gx-lg-5">
-                            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
-                                <h4><strong>Responsive</strong></h4>
-                                <p class="text-faded mb-0">Looks great on any screen size!</p>
-                            </div>
-                            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
-                                <h4><strong>Redesigned</strong></h4>
-                                <p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
-                            </div>
-                            <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                            <!-- <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
                                 <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
                                 <h4><strong>Favorited</strong></h4>
                                 <p class="text-faded mb-0">
@@ -93,12 +127,25 @@
                                     <i class="fas fa-heart"></i>
                                     Start Bootstrap!
                                 </p>
+                            </div>-->
+                            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                <span class="service-icon rounded-circle mx-auto mb-3">
+                                    <!-- <i class="icon-screen-smartphone"></i> -->
+                                    <img src="https://www.shutterstock.com/image-vector/web-development-coding-bootcamp-line-260nw-1364840246.jpg" alt="" style="border-radius: 50%; font-size: 70px;">
+                                </span>
+                                <h4><strong>Frontend development</strong></h4>
+                                <p class="text-faded mb-0">Responsive Frontend Design</p>
                             </div>
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                                <h4><strong>Backend Development</strong></h4>
+                                <p class="text-faded mb-0">Bring your static website to life</p>
+                            </div>
+                            <!--<div class="col-lg-3 col-md-6">
                                 <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
                                 <h4><strong>Question</strong></h4>
                                 <p class="text-faded mb-0">I mustache you a question...</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </section>

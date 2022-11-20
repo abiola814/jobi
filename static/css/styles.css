@@ -11469,22 +11469,43 @@ footer.footer .social-link:hover {
   }
 }
 .masthead {
-  min-height: 30rem;
+  /* min-height: 30rem; */
   position: relative;
   display: table;
   width: 100%;
   height: auto;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  text-align: center;
+  /* padding-top: 8rem;
+  padding-bottom: 8rem; */
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/bg-masthead.jpg");
-  background-position: center center;
+  /* background: url(../assets/img/appointment.jpg); */
+  /* background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+}
+.opac{
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
+.jobi{
+  position: absolute;
+  top: 50;
+  z-index: 2;
 }
 .masthead h1, .masthead .h1 {
   font-size: 4rem;
   margin: 0;
   padding: 0;
+  color: #fff;
+}
+.jobi h1{
+  text-align: center;
+  margin: auto;
+  color: #fff;
+}
+.colos{
+  color: #fff;
 }
 @media (min-width: 992px) {
   .masthead {
