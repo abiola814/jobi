@@ -16,14 +16,53 @@ img{
 body,html{
 	scroll-behavior: smooth;
 }
-.header{
+/* .header{
 	position: fixed;
 	left: 0;
 	top:0;
 	width: 100%;
 	z-index: 100;
 	padding: 20px;
+} */
+
+.cta-btn {
+    display: inline-block;
+    position: relative;
+    padding: 0.8rem 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+    z-index: 1;
+    transition: all .6s cubic-bezier(.19,1,.22,1);
 }
+
+.text-color-main {
+    background-image: linear-gradient(135deg,#1D809F,#1D809F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.cta-btn--hero {
+    background-image: linear-gradient(135deg,#1D809F,#1D809F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+	border: 2px solid #1D809F;
+    border-image-slice: 1;
+}
+
+.cta-btn--resume{
+    background-image: linear-gradient(135deg,#ebebee,#f5f6fa);
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    border-image-slice: 1;
+	font-size: 25px;
+}
+/* .cta-btn--hero:hover{3458f5
+    background: linear-gradient(135deg,#02aab0,#00cdac);
+	color: #fff;
+} */
 .main_nav{}
 .main_nav ul{
 	padding: 0;

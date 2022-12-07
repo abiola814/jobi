@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 from django.contrib.auth import authenticate, login
 
-# Create your views here.
 from django.shortcuts import render,redirect
 from chat.models import Customers,UserProfile,Message
 from django.views.decorators.csrf import csrf_exempt
@@ -31,11 +30,11 @@ def user_register(request):
     if request.method == 'POST':
         body = request.POST
 
-        name=body['name']
-        username=body['username']
-        email=body['email']
-        password=body['pswd']
-        confirm_password=body['cpswd']
+        name=body.get('name')
+        username=body.get('username')
+        email=body.get('email')
+        password=body.get('pswd')
+        confirm_password=body.get('cpswd')
 
         fields = RegisterUser(name=name, username=username, email=email, password=password, confirm_password=confirm_password)
         email = fields.validate_email()
@@ -43,10 +42,10 @@ def user_register(request):
         password = fields.validate_password()
         if not email:
             message.append("Email already registered!")
-        elif not password:
-            message.append("Passwords don't match!")
         elif not username:
             message.append("Username already registered!")
+        elif not password:
+            message.append("Passwords don't match!")
         else:
             print("SUCCESS!!!!")
             fields.save()
@@ -66,3 +65,15 @@ def user_register(request):
 
     return render(request, 'project/post/register.html', {"message": message})
 
+def user_login(request):
+    return render(request, 'project/post/login.html')
+    # if request.method == 'POST':
+    #     body = request.POST
+
+    #     username = body['name']
+    #     password = body['pswd']
+
+    #     users = RegisterUser.object.get()
+    #     if (username is not None and password is not None):
+    #         user = authenticate(username=username, password=password)
+    #         if user is not None:

@@ -17,15 +17,20 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/slider-img.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/project_style.css' %}"> -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
 
 <!-- ChatBot -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.convform.css' %}">
 <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.convform.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/scrollreveal.min.js' %}"></script>
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     </head>
     <body id="page-top">
@@ -44,11 +49,15 @@
                 </ul>
             </nav>
                 <!-- Header-->
-                <header class="masthead d-flex align-items-center">
-                    <div class="container px-4 px-lg-5 text-center">
-                        <h1 class="mb-1">JOBI PROJECT</h1>
-                        <h3 class="mb-5"><em>A Software group that build production application </em></h3>
-                        <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+                <header class="main-folder container-fluid text-center">
+                    <div class="slide-img row gx-4 gx-lg-5 justify-content-center listing">
+                        <img src="../../static/images/sillos.png" alt="" class="col-lg-12" id="slider">
+                    </div>
+                    <div class="slider-overlay">
+                        <div class="slider-in-overlay">
+                            <h1 class="slider-h1 col-lg-10">Welcome to jobi world</h1>
+                            <h3 class="slider-h3">Let's Build your Dream Website</h3>
+                        </div>
                     </div>
                 </header>
                 <!-- About-->
@@ -119,7 +128,7 @@
                             <em>your</em>
                             next website!
                         </h2>
-                        <a class="btn btn-primary btn-xl" href="#">Login Now!</a>
+                        <a class="btn btn-primary btn-xl" href="{% url 'project:user_login' %}">Login Now!</a>
                     </div>
         {% block content %}
         {% endblock %}
@@ -153,7 +162,7 @@
         
               <input data-conv-question="Enter your e-mail" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" type="email" name="email" required placeholder="What's your e-mail?">
 
-              <input type="text" name="other" data-conv-question="write down what you need jobi to help you with">
+              <input type="text" name="other" data-conv-question="Explain what you need jobi to help you with">
 
               <select data-conv-question="Please follow the step to create an account for immediate reply" name="account">
                 <option value="yes">yes</option>
@@ -181,9 +190,9 @@
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container px-4 px-lg-5">
-                <ul class="list-inline mb-5">
+                <!-- <ul class="list-inline mb-5">
                     <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-facebook"></i></a>
+                        <a class="social-link rounded-circle text-white mr-3" href="https://www.linkedin.com/in/abiola-oladunjoye-8b61351a7/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                     </li>
                     <li class="list-inline-item">
                         <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
@@ -191,8 +200,8 @@
                     <li class="list-inline-item">
                         <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
                     </li>
-                </ul>
-                <p class="text-muted small mb-0">Copyright &copy; Your Website 2022</p>
+                </ul> -->
+                <p class="text-muted small mb-0">Copyright &copy; JOBI 2022</p>
             </div>
         </footer>
         <!-- Scroll to Top Button-->
@@ -201,20 +210,47 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="{% static 'js/scripts.js' %}"></script>
+        <script src="{% static 'js/src.081681fd.js' %}"></script>
         <script type="text/javascript">
-            portfolioList = document.querySelectorAll('.portfolio-box');
-            portfolioList.forEach(function(portfolioPic) {
-                portfolioPic.addEventListener('click',function(){
-                    bg = this.style.backgroundImage;
-                    document.getElementById('port_pop_pic_bg').classList.add("active")
-                    document.getElementById('port_pop_pic').style.backgroundImage = bg
-                    document.getElementById('port_pop_pic').classList.add("active")
-                });	
+            const slider = document.getElementById('slider');
+
+            const images = new Array(
+                '../../static/images/online.png',
+                '../../static/images/shazam.png',
+                '../../static/images/exam.png',
+                '../../static/images/moveit.png',
+                '../../static/images/movie.png',
+                '../..static/images/votingsystem.png'
+            )
+            let i = 0;
+            const sliderfunc = function(){
+                if(i > images.length -1){
+                    i = 0;
+                }
+                slider.src = images[i];
+                i++;
+                setTimeout('sliderfunc()',4000);
+            }
+            window.addEventListener('load', function () {
+                sliderfunc();
             })
-            document.getElementById('port_pop_pic_bg').addEventListener('click',function(){
-                    document.getElementById('port_pop_pic_bg').classList.remove("active")
-                    document.getElementById('port_pop_pic').classList.remove("active")
-            })
+
+            // setTimeout(() =>{
+            //     portfolioList = document.querySelectorAll('.portfolio-box');
+            //     portfolioList.forEach(function(portfolioPic) {
+            //         portfolioPic.addEventListener('click',function(){
+            //             bg = this.style.backgroundImage;
+            //             document.getElementById('port_pop_pic_bg').classList.add("active")
+            //             document.getElementById('port_pop_pic').style.backgroundImage = bg
+            //             document.getElementById('port_pop_pic').classList.add("active")
+            //         });	
+            //     })
+            //     document.getElementById('port_pop_pic_bg').addEventListener('click',function(){
+            //             document.getElementById('port_pop_pic_bg').classList.remove("active")
+            //             document.getElementById('port_pop_pic').classList.remove("active")
+            //     })}, 2000)
+
+            
         </script>
     </body>
 </html>

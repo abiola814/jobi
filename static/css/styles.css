@@ -11483,6 +11483,7 @@ footer.footer .social-link:hover {
   background-repeat: no-repeat;
   background-size: cover; */
 }
+
 .opac{
   background: rgba(0, 0, 0, 0.6);
   width: 100%;
@@ -11492,7 +11493,7 @@ footer.footer .social-link:hover {
   position: absolute;
   top: 50;
   z-index: 2;
-}
+}                                                                                     
 .masthead h1, .masthead .h1 {
   font-size: 4rem;
   margin: 0;
