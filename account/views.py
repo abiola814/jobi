@@ -18,6 +18,9 @@ from django.contrib.auth.models import User
 def social_view(request):
     return render(request,'project/post/home.html')
 
+def project_view(request):
+    return render(request,'project/post/projects.html')
+
 def dashboard(request):
     if User.is_authenticated:
         return render(request,'chat/dashboard.html')
@@ -66,6 +69,24 @@ def user_register(request):
     return render(request, 'project/post/register.html', {"message": message})
 
 def user_login(request):
+    message = []
+    if request.method == 'POST':
+        body = request.POST
+        name = body.get('username',False)
+        password = body.get('pswd',False)
+
+        if name:
+            message.append("Username required!")
+        elif password:
+            message.append("Password required!")
+        try:
+            user = authenticate(name=name, password=password)
+            login(request, user)
+            profile = UserProfile(name=name)
+            return redirect('dashboard/')
+        except:
+            return render(request,'project/post/login.html',{"message":"invalid credential"})
+
     return render(request, 'project/post/login.html')
     # if request.method == 'POST':
     #     body = request.POST
