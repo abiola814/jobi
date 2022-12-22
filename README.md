@@ -1,5 +1,5 @@
 # GBTECH 
-    **GBTECH** is the best developer group that focus on building production and scalable application for individuals and companies
+**GBTECH** is the best developer group that focus on building production and scalable application for individuals and companies
 
 # Our Services
 ## <details>
