@@ -11,7 +11,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-	<title>Register Page</title>
+	<title>Login Page</title>
 
     <!-- Icons font CSS-->
     <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
@@ -28,29 +28,31 @@
 </head>
 
 <body>
-    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+    
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins" style="background: #00203fff;">
         <div class="wrapper wrapper--w780">
-            <div class="card card-3">
+            <div class="card card-3" style="background: #fff;">
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Login</h2>
-                    <form method="post" action="user_login">
-						{% csrf_token %}
-                        <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Username" name="username">
+                            <form method="post" action="user_login" id="form">
+                                {% csrf_token %}
+                                        <div class="input-group">
+                                            <input class="input--style-3" id = 'username' type="text" placeholder="Username" name="username" required="">
+                                        </div>
+                                        <div class="input-group">
+                                            <input class="input--style-3" id='password' type="password" placeholder="Password" name="pswd" required="">
+                                        </div>
+                                <div class="p-t-10">
+                                    <button class="btn btn--pill btn--green" id='submit' type="submit">Submit</button>
+                                </div>
+                                <p class="mt-3" style="color: #00203fff;">Don't have an accout? <a href="{% url 'project:user_register' %}">Register</a></p>
+                            </form>
+                            <p style="width: 100%; text-align: center;"><a style="color: #00203fff; text-decoration: none;" href="{% url 'project:user_forgot_password' %}">Forgot Password?</a></p>
                         </div>
-                        <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Password" name="pswd">
-                        </div>
-                        <div class="p-t-10">
-                            <button class="btn btn--pill btn--green" type="submit">Submit</button>
-                        </div>
-						<p class="mt-3" style="color: #fff;">Don't have an accout? <a href="{% url 'project:user_register' %}">Register</a></p>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
     <!-- Jquery JS-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>

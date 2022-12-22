@@ -12,4 +12,7 @@ urlpatterns=[
     path('login/user_login', views.user_login, name='user_login'),
     path('register/dashboard/', views.dashboard, name='dashboard'),
     path('login/dashboard/', views.dashboard, name='dashboard'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('logout/', views.logout_view, name='logout'),
+    path('forgot_password/user_forgot_password', views.forgot_password, name='user_forgot_password'),
 ]

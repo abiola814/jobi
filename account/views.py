@@ -14,6 +14,16 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.views.decorators.debug import sensitive_post_parameters
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.core.mail import send_mail, BadHeaderError
+from chat.views import getuserid
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 def social_view(request):
     return render(request,'project/post/home.html')
@@ -23,12 +33,13 @@ def project_view(request):
 
 def dashboard(request):
     if User.is_authenticated:
-        return render(request,'chat/dashboard.html')
+        return render(request,'project/post/dashboard.html')
     else:
-        return redirect("register/")        
+        return redirect("login/")        
     
 @sensitive_post_parameters('pswd', 'cpswd')
 def user_register(request):
+    """Registers a User"""
     message=[]
     if request.method == 'POST':
         body = request.POST
@@ -57,18 +68,13 @@ def user_register(request):
             profile = UserProfile(email=email, name=name, username=username)
             profile.save()
             return redirect("dashboard/")
-        # if fields.is_valid():
-        #     if password == confirm_password:
-        #         fields.save()
-        #         messages.info(request, 'Registeration successful')
-        #         return redirect('register.html')
-        # else:
-        #     messages.info(request, 'confirm password and password must be the same')
-        #     return redirect('register.html')
 
     return render(request, 'project/post/register.html', {"message": message})
 
+    
+@sensitive_post_parameters('pswd')
 def user_login(request):
+    """Handles User Login"""
     message = []
     if request.method == 'POST':
         body = request.POST
@@ -82,19 +88,41 @@ def user_login(request):
         try:
             user = authenticate(name=name, password=password)
             login(request, user)
-            profile = UserProfile(name=name)
             return redirect('dashboard/')
         except:
             return render(request,'project/post/login.html',{"message":"invalid credential"})
 
     return render(request, 'project/post/login.html')
-    # if request.method == 'POST':
-    #     body = request.POST
+    
+def forgot_password(request):
+    message=[]
+    if request.method == 'POST':
+        body = request.POST
+        email = body.get('email', False)
 
-    #     username = body['name']
-    #     password = body['pswd']
+        confirm_email = UserProfile.objects.filter(Q(email=email))
+        if confirm_email.exists():
+            for email in confirm_email:
+                subject = "Password Reset Requested"
+                email_template_name = "project/post/forgot_pass_instruction.txt"
+                c = {
+                    "email":email.email,
+                    'domain':'127.0.0.1:8000',
+                    'site_name': 'Website',
+                    "uid": urlsafe_base64_encode(force_bytes(email.pk)),
+                    "email": email,
+                    'token': default_token_generator.make_token(email),
+                    'protocol': 'http',
+                }
+                email = render_to_string(email_template_name, c)
+                try:
+                    send_mail(subject, email, 'admin@example.com' , [email.email], fail_silently=False)
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
+                return redirect ("/password_reset")
+    return render(request, "project/post/forgot_password.html")
 
-    #     users = RegisterUser.object.get()
-    #     if (username is not None and password is not None):
-    #         user = authenticate(username=username, password=password)
-    #         if user is not None:
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')

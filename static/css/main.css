@@ -253,18 +253,18 @@ h6 {
 }
 
 .btn--green {
-  background: #57b846;
+  background: #00203fff;
 }
 
 .btn--green:hover {
-  background: #4dae3c;
+  background: rgb(1, 50, 100);
 }
 
 /* ==========================================================================
    #DATE PICKER
    ========================================================================== */
 td.active {
-  background-color: #2c6ed5;
+  background-color: #00203fff;
 }
 
 input[type="date" i] {
@@ -467,7 +467,7 @@ input {
    ========================================================================== */
 .title {
   font-size: 24px;
-  color: #fff;
+  color: #00203fff;
   font-weight: 400;
   margin-bottom: 36px;
 }
@@ -484,7 +484,7 @@ input {
 }
 
 .card-3 {
-  background: #000;
+  background: #fff;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
