@@ -37,11 +37,9 @@ body,html{
 
 
 .cta-btn--hero {
-    background-image: #00203fff;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-	border: 2px solid #fff;
+    color: #00203fff;
+	border: 2px solid #00203fff;
     border-image-slice: 1;
 }
 
