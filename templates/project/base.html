@@ -18,34 +18,35 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/slider-img.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/project_style.css' %}"> -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/slider-img.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/project_style.css' %}"> -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
 
-<!-- ChatBot -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.convform.css' %}">
-<script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/jquery.convform.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/scrollreveal.min.js' %}"></script>
+        <!-- ChatBot -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.convform.css' %}">
+        <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.convform.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/scrollreveal.min.js' %}"></script>
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     </head>
     <body id="page-top">
             <!-- Navigation-->
             <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
             <nav id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    
+                <ul class="sidebar-nav">  
                         <li class="sidebar-brand"><a href="#page-top">{{ side }}</a></li>
                         <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
                         <li class="sidebar-nav-item"><a href="#about">About</a></li>
                         <li class="sidebar-nav-item"><a href="#services">Services</a></li>
                         <li class="sidebar-nav-item"><a href="#portfolio">project</a></li>
-                        <li class="sidebar-nav-item"><a href="#contact">Contact</a></li> 
-                
+                        <li class="sidebar-nav-item"><a href="#contact">Developers</a></li> 
+                        {% comment %}
+                        <!-- <li class="sidebar-nav-item"><a href="{% url 'project:dahsboard' %}">Dashboard</a></li>  -->
+                        {% endcomment %}
                 </ul>
             </nav>
                 <!-- Header-->
@@ -215,12 +216,12 @@
             const slider = document.getElementById('slider');
 
             const images = new Array(
-                '../../static/images/online.png',
+                '../../static/images/online.jpeg',
                 '../../static/images/shazam.png',
-                '../../static/images/exam.png',
-                '../../static/images/moveit.png',
-                '../../static/images/movie.png',
-                '../..static/images/votingsystem.png'
+                '../../static/images/exam.jpeg',
+                '../../static/images/moveit.jpeg',
+                '../../static/images/movie.jpeg',
+                '../..static/images/voting-system.png'
             )
             let i = 0;
             const sliderfunc = function(){

@@ -2,17 +2,18 @@ var col = document.getElementsByClassName("collapse");
 
 
 for (let i=0; i<col.length;i++){
-col[i].addEventListener("click",function(){
-    this.classList.toggle("active");
-    var contnet= this.nextElementSibling;
-    console.log(contnet)
-    if (contnet.style.maxHeight){
-        contnet.style.maxHeight=null;
-    }
-    else{
-        contnet.style.maxHeight=contnet.scrollHeight + "px";
-    }
-});
+    col[i].addEventListener("click",function(){
+        console.log('click');
+        this.classList.toggle("active");
+        var contnet= this.nextElementSibling;
+        console.log(contnet)
+        if (contnet.style.maxHeight){
+            contnet.style.maxHeight=null;
+        }
+        else{
+            contnet.style.maxHeight=contnet.scrollHeight + "px";
+        }
+    });
 }
 
 function getTime() {
@@ -34,7 +35,8 @@ function getTime() {
 
 // Gets the first message
 function firstBotMessage() {
-    let firstMessage = "How's it going?"
+    let firstMessage = `Hello Welcome to GBTECH
+                            How can we help you`
     document.getElementById("chat-msg").innerHTML = '<p class="chat-bot"><span>' + firstMessage + '</span></p>';
 
     let time = getTime();
@@ -59,10 +61,10 @@ function getResponse() {
     let userText = $("#textinput").val();
 
     if (userText == "") {
-        userText = "I love Code Palace!";
+        return false;
     }
 
-    let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
+    let userHtml = `<p class="userText"><span> ${ userText }</span></p>`;
 
     $("#textinput").val("");
     $("#chat-box").append(userHtml);
@@ -70,13 +72,13 @@ function getResponse() {
 
     setTimeout(() => {
         getHardResponse(userText);
-    }, 1000)
+    }, 3000)
 
 }
 
 // Handles sending text via button clicks
 function buttonSendText(sampleText) {
-    let userHtml = '<p class="userText"><span>' + sampleText + '</span></p>';
+    let userHtml = `<p class="userText"><span> ${ sampleText } </span></p>`;
 
     $("#textinput").val("");
     $("#chat-box").append(userHtml);
@@ -97,28 +99,18 @@ function heartButton() {
 }
 
 // Press enter to send a message
-$("#textInput").keypress(function (e) {
-    if (e.which == 13) {
+$("#textInput").keydown(function (e) {
+    console.log(e.charcode === 13)
+    if (e.charcode === 13) {
         getResponse();
     }
 });
 
 function getBotResponse(input) {
-    //rock paper scissors
-    if (input == "rock") {
-        return "paper";
-    } else if (input == "paper") {
-        return "scissors";
-    } else if (input == "scissors") {
-        return "rock";
-    }
+    let userText = $('#textinput').val();    
 
-    // Simple responses
-    if (input == "hello") {
-        return "Hello there!";
-    } else if (input == "goodbye") {
-        return "Talk to you later!";
-    } else {
-        return "Try asking something else!";
+    if (userText){
+        return "A Developer will be with you shortly";
     }
+    
 }

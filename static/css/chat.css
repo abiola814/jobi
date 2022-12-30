@@ -2,11 +2,11 @@
     bottom: 0;
     position: fixed;
     right: 50px;
-    
+    z-index: 999;
 }
 
 .collapse{
-    background-color: rgb(82,151,255);
+    background-color: #00203fff;
     color: white;
     cursor: pointer;
     width: 350px;
@@ -141,23 +141,26 @@
     }
 }
 
-@media screen and (max-width:600px) {
+@media (max-width:600px) {
     .full-chat-block{
         width: 100%;
         border-radius: 0px;
-
     }
     .chat-collapse{
         position: fixed;
         bottom: 0;
         right: 0;
         width: 100%;
-
     }
     .collapse{
         width: 100%;
         border: 0px;
         border-top:3px solid white;
         border-radius: 0px;
+    }
+}
+@media (max-width: 500px){
+    .outer-contain{
+        min-height: 400px;
     }
 }

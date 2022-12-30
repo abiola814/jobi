@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from .models import Customers,UserProfile,Message
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 from chat.serializers import MessageSeriallizer
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -67,7 +69,7 @@ def index(request):
     """
     if not request.user.is_authenticated:
         print('not yet login')
-        return render(request,'chat/signin.html')
+        return render(request,'chat/login.html')
     else:
         username=request.user.username
         id = getuserid(username)
@@ -127,9 +129,3 @@ def message_list(request, sender=None, receiver=None):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
-
-
-
-
-
-

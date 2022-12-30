@@ -111,16 +111,6 @@
             </a>
             {% endfor %}
           </div>
-
-        
-         
-   
-
-
-
-    
- 
-
         </div>
       </div>
 
@@ -809,27 +799,27 @@ body {
                 scrollTop: $('#board')[0].scrollHeight
             }, 800);
          } 
-const text_box =  '<div class="row message-body">'+
-                  '<div class="col-sm-12 message-main-sender">'+
-                  '<div class="sender">'+
-                 '<div class="message-text">'+
-                 '{description}'+
-                  '</div>'+
-                  '<span class="message-time pull-right">'+
-                  '{time}'+
-                  '</span>'+
-                  '</div>'
+const text_box =  `<div class="row message-body">
+                  <div class="col-sm-12 message-main-sender">
+                  <div class="sender">
+                 <div class="message-text">
+                 ${description}
+                  </div>
+                  <span class="message-time pull-right">
+                  ${time}
+                  </span>
+                  </div>`
 
-const text =   '<div class="row message-body">'+
-              '<div class="col-sm-12 message-main-reciever">'+
-              '<div class="receiver">'+
-            '<div class="message-text">'+
-            '{description}'+
-              '</div>'+
-              '<span class="message-time pull-right">'+
-              '{time}'+
-              '</span>'+
-              '</div>'
+const text =   `<div class="row message-body">
+              <div class="col-sm-12 message-main-reciever">
+              <div class="receiver">
+            <div class="message-text">
+            ${description}
+              </div>
+              <span class="message-time pull-right">
+              ${time}
+              </span>
+              </div>`
 
 
 $(function(){
@@ -854,9 +844,10 @@ $(function(){
   })
   setInterval(receive, 1000)
 })
+
 function send(sender, receiver, message){
 
-  $.post('/api/messages', '{"user_name": "' + sender + '", "staff_name": "' +
+  $.post('/api/messages', '{"user_name": "` ${sender} `", "staff_name": "' +
           receiver + '","description": "' + message + '" }', function (data) {
       var field = text_box.replace('{description}', message);
       var today = new Date();
@@ -864,9 +855,9 @@ function send(sender, receiver, message){
       field = field.replace('{time}', time)
       $('#board').append(field);
       scrolltoend();
-
   })
 }
+
 function receive(){
   $.get('/api/messages/' + sender_id + '/' + receiver_id, function(data){
       if(data.length !== 0){
@@ -876,7 +867,6 @@ function receive(){
               field = field.replace('{time}', time);
               $('#board').append(field);
               scrolltoend();
-              
           }
       }
   })
