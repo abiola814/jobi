@@ -319,7 +319,7 @@ input[type="submit"]{
 
 
 /*ChatBot*/
-.chat_icon{
+.chat_icon, .chat_icon_sec{
 	position: fixed;
 	bottom: 0;
 	left: 30px;
