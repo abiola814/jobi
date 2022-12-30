@@ -24,6 +24,8 @@ from django.core.mail import send_mail, BadHeaderError
 from chat.views import getuserid
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.generic.base import TemplateView
+
 
 def social_view(request):
     return render(request,'project/post/home.html')
@@ -104,7 +106,7 @@ def forgot_password(request):
         if confirm_email.exists():
             for email in confirm_email:
                 subject = "Password Reset Requested"
-                email_template_name = "project/post/forgot_pass_instruction.txt"
+                email_template_name = "project/post/reset_password_complete.html"
                 c = {
                     "email":email.email,
                     'domain':'127.0.0.1:8000',
@@ -119,10 +121,20 @@ def forgot_password(request):
                     send_mail(subject, email, 'admin@example.com' , [email.email], fail_silently=False)
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
-                return redirect ("/password_reset")
+                return redirect ("/password_reset_done")
     return render(request, "project/post/forgot_password.html")
 
+def password_reset_done(request):
+    return redirect(request,'project/post/password_reset_done.html')
 
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+
+# class PasswordChangeView(TemplateView):
+#     url_name = 'password_reset_view'
+#     template_name = 'project/post/forgot_password.html'
+#     redirect('password_reset_done')
+
+#     if request.method == 'POST':

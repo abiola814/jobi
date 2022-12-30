@@ -1,5 +1,5 @@
 # MJOBI TECH 
-** MJOBI TECH** is the best developer group that focus on building production and scalable application for individuals and companies
+**MJOBI TECH** is the best developer group that focus on building production and scalable application for individuals and companies
 
 # Our Services
 <details>

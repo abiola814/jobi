@@ -33,7 +33,7 @@
         <script type="text/javascript" src="{% static 'js/scrollreveal.min.js' %}"></script>
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     </head>
-    <body id="page-top">
+    <body id="page-top" style="width: 100%; overflow-x: hidden; overflow-y: scroll;">
             <!-- Navigation-->
             <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
             <nav id="sidebar-wrapper">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="slider-overlay">
                         <div class="slider-in-overlay">
-                            <h1 class="slider-h1 col-lg-10">Welcome to jobi world</h1>
+                            <h1 class="slider-h1 col-lg-10">Welcome to GBTech world</h1>
                             <h3 class="slider-h3">Let's Build your Dream Website</h3>
                         </div>
                     </div>
@@ -66,9 +66,9 @@
                     <div class="container px-4 px-lg-5 text-center">
                         <div class="row gx-4 gx-lg-5 justify-content-center">
                             <div class="col-lg-10">
-                                <h2>JOBI PROJECT is the best developer group that focus on building production and scalable application for individual and company!</h2>
+                                <h2>GBTech is the best developer group that focus on building production and scalable application for individual and company!</h2>
                                   <p class="lead mb-5">
-                                  the purpose of jobi is to make people life easy and soft .by designing and developing a masterclass application that will present our customer inovation and idea in a lucrative way
+                                  the purpose of GBTech is to make people life easy and soft .by designing and developing a masterclass application that will present our customer inovation and idea in a lucrative way
                                 </p>
                                 <a class="btn btn-dark btn-xl" href="#services">What We Offer</a>
                             </div>
@@ -134,8 +134,12 @@
         {% block content %}
         {% endblock %}
                 </div>
-        <div class="chat_icon " >
+        <div class="chat_icon chat_icon_one">
             <i class="fa fa-comments" aria-hidden="true"></i>
+        </div>
+
+        <div class="chat_icon_sec chat_icon_two">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </div>
         
         <div class="chat_box">

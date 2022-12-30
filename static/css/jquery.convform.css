@@ -81,11 +81,11 @@
 }
 
 form.convFormDynamic {
-    width: calc(100% - 33px);
-    margin: 10px auto 15px;
+    width: calc(100% - 30px);
+    /* margin: 10px auto 15px; */
     padding: 0 !important;
     position: relative;
-    box-shadow: 0 0 5px 5px rgba(222, 222, 222, 0.4);
+    /* box-shadow: 0 0 5px 5px rgba(222, 222, 222, 0.4); */
 }
 
 form.convFormDynamic textarea.userInputDynamic {
@@ -143,13 +143,15 @@ div.conv-form-wrapper div#messages:after {
 }
 div.conv-form-wrapper {
     position: relative;
+    height: 100%;
 }
 div.conv-form-wrapper div.wrapper-messages {
     position: relative;
-    height: 577px;
+    height: 100%;
     max-height: 71vh;
     overflow-y: scroll;
     transition: margin 0.1s;
+    min-height: 85%;
 }
 div.conv-form-wrapper:before {
     content: '';
