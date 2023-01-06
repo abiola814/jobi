@@ -26,8 +26,22 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView
 
-
+@csrf_exempt
 def social_view(request):
+    if request.method =='POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        name = request.POST.get('name')    
+        fields = RegisterUser(name=name, username=username, email=email, password=password, confirm_password=password)
+        emails = fields.validate_email()
+        usernames = fields.validate_username()
+        password = fields.validate_password()
+        if not emails:
+            print("Email already registered!")
+        elif not usernames:
+            print("Username already registered!")
+        return render(request,'project/post/home.html')
     return render(request,'project/post/home.html')
 
 def project_view(request):
@@ -131,6 +145,22 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
+def chatlogin(request):
+  if request.POST.get('action') == 'chatlogin':
+    username = request.POST.get('username')
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+    name = request.POST.get('name')    
+    fields = RegisterUser(name=name, username=username, email=email, password=password, confirm_password=password)
+    emails = fields.validate_email()
+    usernames = fields.validate_username()
+    password = fields.validate_password()
+    if not emails:
+        p="Email already registered!"
+    elif not usernames:
+        p="Username already registered!"
+    data={data:p}
+    return JsonResponse(data, safe=False)
 
 # class PasswordChangeView(TemplateView):
 #     url_name = 'password_reset_view'
